@@ -216,6 +216,27 @@ export default function SystemDesignDiagram() {
         </p>
       </section>
 
+      <section
+        aria-labelledby="judge-narrative-heading"
+        className="rounded-2xl border border-teal-700/45 bg-gradient-to-b from-teal-950/30 to-slate-950/50 p-5 sm:p-6"
+      >
+        <h2
+          id="judge-narrative-heading"
+          className="text-center text-[10px] font-bold uppercase tracking-[0.18em] text-teal-300/95"
+        >
+          Performance -latency, accuracy, and privacy
+        </h2>
+        <p className="mx-auto mt-4 max-w-4xl text-sm leading-relaxed text-slate-200 sm:text-[15px]">
+          Every AI system makes trade-offs across latency, cost, and accuracy. Most research tools optimise freely
+          across all three. Prism operates under a fourth constraint — privacy — that is non-negotiable in regulated
+          finance. No bank will route client earnings calls through a shared cloud endpoint. That single constraint
+          determines the architecture. Within it, we recover cost entirely (local inference, zero token fees), mitigate
+          latency (collapsed to 2 LLM calls, streaming hops), and improve accuracy over time through federated
+          learning. The 20-second latency isn’t a weakness — it’s the price of a system that can actually be
+          deployed inside a bank.
+        </p>
+      </section>
+
       <aside className="rounded-xl border border-slate-700 bg-slate-950/50 p-4 text-sm leading-relaxed text-slate-400">
         <span className="font-semibold text-slate-200">Design deltas vs. a generic RAG diagram:</span> per-tenant LLM
         profiles; You.com rows and <code className="text-slate-500">you_com</code> labels in the matrix; raw LLM text
