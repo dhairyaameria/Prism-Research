@@ -1,5 +1,7 @@
 # Prism
 
+**Repository:** [github.com/dhairyaameria/Prism-Research](https://github.com/dhairyaameria/Prism-Research)
+
 Multi-agent investment research copilot: **tenant-scoped RAG** (Postgres + **pgvector**), then **Analysis → Thesis** LLM stages on the default **fast** pipeline — or the full **Google ADK** chain when `PRISM_PIPELINE=adk`. Served by **FastAPI**, **MCP** (`prism-market-intel`), optional **You.com** live search, **Baseten** / Ollama / OpenAI-compatible routing, **Veris**-style regression eval and packaging hooks, and a **Flower** federated-learning stretch (`apps/fl_stretch`). The **Next.js** demo landing walks through features, architecture, client isolation, server-side FL narrative, and applicability.
 
 ## Prerequisites
