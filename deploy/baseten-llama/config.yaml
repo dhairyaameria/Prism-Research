@@ -1,0 +1,43 @@
+# Baseten Engine-Builder (TensorRT-LLM) — open-weights Llama from Hugging Face.
+# Tutorial pattern: https://docs.baseten.co/development/model/build-your-first-model
+#
+# Before `truss push`:
+#   - `truss login` (or export BASETEN_API_KEY)
+#   - For gated Meta checkpoints: accept the license on Hugging Face, then
+#     `export HF_TOKEN=...` so the build can download weights.
+#
+# Smaller / faster compile (default):
+model_name: Llama-3.2-3B-Instruct
+resources:
+  accelerator: L4
+model_metadata:
+  tags:
+    - openai-compatible
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.2-3B-Instruct"
+    max_seq_len: 8192
+    quantization_type: fp8
+    tensor_parallel_count: 1
+
+# --- Alternative: Llama 3.1 8B (stronger; same L4 + fp8 often works) ---
+# Replace the block above with:
+#
+# model_name: Llama-3.1-8B-Instruct
+# resources:
+#   accelerator: L4
+# model_metadata:
+#   tags:
+#     - openai-compatible
+# trt_llm:
+#   build:
+#     base_model: decoder
+#     checkpoint_repository:
+#       source: HF
+#       repo: "meta-llama/Meta-Llama-3.1-8B-Instruct"
+#     max_seq_len: 8192
+#     quantization_type: fp8
+#     tensor_parallel_count: 1

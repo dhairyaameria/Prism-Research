@@ -1,0 +1,16 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    environment:
+      POSTGRES_USER: prism
+      POSTGRES_PASSWORD: prism
+      POSTGRES_DB: prism
+    ports:
+      - "5433:5432"
+    volumes:
+      - prism_pg:/var/lib/postgresql/data
+
+volumes:
+  prism_pg:

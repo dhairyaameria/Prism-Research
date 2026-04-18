@@ -1,0 +1,78 @@
+/**
+ * Plain CSS (no @tailwind) — keeps Prism readable if Tailwind utilities are not
+ * emitted in dev (e.g. PostCSS/Tailwind pipeline issues).
+ */
+.prism-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #0b1020;
+  color: #f1f5f9;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.prism-root a {
+  color: #5eead4;
+}
+.prism-root a:hover {
+  text-decoration: underline;
+}
+
+.prism-row {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.prism-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: min(280px, 100%);
+  max-width: 100%;
+  flex-shrink: 0;
+  border-right: 1px solid #1e293b;
+  background: rgba(18, 26, 47, 0.92);
+  min-height: 0;
+}
+
+.prism-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.prism-landing {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #0b1020;
+  color: #f1f5f9;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.prism-landing a {
+  color: #5eead4;
+  text-decoration: none;
+}
+.prism-landing a:hover {
+  text-decoration: underline;
+}
+
+.prism-demo-hint {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  background: #1e293b;
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+}
+.prism-demo-hint a {
+  color: #5eead4;
+  font-weight: 600;
+}

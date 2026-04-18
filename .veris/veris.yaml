@@ -1,0 +1,30 @@
+# Veris sandbox — Prism API actor channel.
+# https://docs.veris.ai/quickstart
+#
+# After `veris login`, run ONCE (writes .veris/config.yaml with environment_id):
+#   veris env create --name prism --agent-name Prism
+# Then: veris env push → veris scenarios create → veris run
+#
+# Local smoke: API on 8008, PYTHONPATH=apps/api/src:. → POST /v1/veris/chat { "message": "..." }
+
+prism:
+  services: []
+
+  actor:
+    channels:
+      - type: http
+        url: http://localhost:8008/v1/veris/chat
+        method: POST
+        request:
+          message_field: message
+        response:
+          type: json
+          message_field: response
+    config:
+      MAX_TURNS: "3"
+
+  agent:
+    name: Prism
+    code_path: /agent
+    entry_point: python -m uvicorn prism_api.main:app --host 0.0.0.0 --port 8008
+    port: 8008

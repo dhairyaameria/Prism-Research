@@ -1,0 +1,61 @@
+{
+  "seed": 42,
+  "initial_global_adapter_w0": [
+    0.0,
+    0.0
+  ],
+  "private_local_targets": {
+    "tenant_a": [
+      1.0,
+      0.2
+    ],
+    "tenant_b": [
+      0.5,
+      0.9
+    ]
+  },
+  "hyperparameters": {
+    "local_lr": 0.5,
+    "noise_scale": 0.02,
+    "sample_counts": {
+      "tenant_a": 100,
+      "tenant_b": 150
+    }
+  },
+  "client_updates_after_fit": {
+    "tenant_a": {
+      "w_prime": [
+        0.5099342830602247,
+        0.0972347139765763
+      ],
+      "noise_draw": [
+        0.009934283060224654,
+        -0.002765286023423693
+      ]
+    },
+    "tenant_b": {
+      "w_prime": [
+        0.26295377076201387,
+        0.4804605971281605
+      ],
+      "noise_draw": [
+        0.01295377076201385,
+        0.03046059712816051
+      ]
+    }
+  },
+  "server_aggregation": {
+    "method": "FedAvg",
+    "formula_equal_n": "(w_a_prime + w_b_prime) / 2",
+    "formula_weighted": "(n_a * w_a_prime + n_b * w_b_prime) / (n_a + n_b)",
+    "aggregated_w_equal_client_weights": [
+      0.3864440269111193,
+      0.2888476555523684
+    ],
+    "aggregated_w_sample_weighted": [
+      0.3617459756812982,
+      0.3271702438675268
+    ]
+  },
+  "privacy_note": "Only low-dimensional adapter tensors leave the client in this toy; raw corpus documents never enter the aggregation step."
+}

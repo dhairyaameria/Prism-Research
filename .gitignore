@@ -1,0 +1,12 @@
+.env
+# Veris CLI: machine-specific env id (do not commit)
+.veris/config.yaml
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+node_modules
+.next
+dist
+*.egg-info

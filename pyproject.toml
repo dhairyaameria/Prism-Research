@@ -1,0 +1,10 @@
+[project]
+name = "prism"
+version = "0.1.0"
+description = "Prism hackathon monorepo"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["packages/adk_prism", "apps/api", "mcp/prism-market-intel", "apps/fl_stretch"]

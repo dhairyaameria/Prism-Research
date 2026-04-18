@@ -1,0 +1,22 @@
+# Build context = Prism repo root (see .veris/.dockerignore)
+ARG GVISOR_BASE=us-central1-docker.pkg.dev/veris-ai-prod/veris-sandbox/veris-gvisor:latest
+FROM ${GVISOR_BASE}
+
+WORKDIR /agent
+
+COPY pyproject.toml /agent/
+COPY apps/api /agent/apps/api
+COPY packages/adk_prism /agent/packages/adk_prism
+COPY mcp/prism-market-intel /agent/mcp/prism-market-intel
+COPY backend /agent/backend
+
+RUN pip install --no-cache-dir hatchling \
+  && pip install --no-cache-dir \
+       -e /agent/packages/adk_prism \
+       -e /agent/mcp/prism-market-intel \
+       -e /agent/apps/api
+
+ENV PYTHONPATH=/agent/apps/api/src:/agent
+
+WORKDIR /agent
+EXPOSE 8008
