@@ -2,7 +2,7 @@
 
 **Repository:** [github.com/dhairyaameria/Prism-Research](https://github.com/dhairyaameria/Prism-Research)
 
-Multi-agent investment research copilot: **tenant-scoped RAG** (Postgres + **pgvector**), then **Analysis → Thesis** LLM stages on the default **fast** pipeline — or the full **Google ADK** chain when `PRISM_PIPELINE=adk`. Served by **FastAPI**, **MCP** (`prism-market-intel`), optional **You.com** live search, **Baseten** / Ollama / OpenAI-compatible routing, **Veris**-style regression eval and packaging hooks, and a **Flower** federated-learning stretch (`apps/fl_stretch`). The **Next.js** demo landing walks through features, architecture, client isolation, server-side FL narrative, and applicability.
+Multi-agent investment research copilot: **tenant-scoped RAG** (Postgres + **pgvector**), then **Analysis → Thesis** LLM stages on the default **fast** pipeline — or the full **Google ADK** chain. Served by **FastAPI**, **MCP** (`prism-market-intel`), optional **You.com** live search, **Baseten** / Ollama / OpenAI-compatible routing, **Veris**-style regression eval and packaging hooks, and a **Flower** federated-learning stretch (`apps/fl_stretch`). The **Next.js** demo landing walks through features, architecture, client isolation, server-side FL narrative, and applicability.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ Multi-agent investment research copilot: **tenant-scoped RAG** (Postgres + **pgv
 
 ### Baseten (production inference)
 
-Set **`PRISM_LLM_PROVIDER=baseten`** so every run uses **only** Baseten (LiteLLM never receives Ollama/Gemini routing for that process). Then configure (see [Baseten OpenAI compatibility](https://docs.baseten.co/inference/model-apis/overview)):
+Set **`PRISM_LLM_PROVIDER=baseten`** so every run uses **only** Baseten. Then configure (see [Baseten OpenAI compatibility](https://docs.baseten.co/inference/model-apis/overview)):
 
 - `BASETEN_API_KEY` — mapped to `OPENAI_API_KEY` for LiteLLM
 - `BASETEN_OPENAI_BASE` — default `https://inference.baseten.co/v1` (or your per-model deployment URL)
