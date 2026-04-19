@@ -1,0 +1,27 @@
+# FastAPI service — build from repo root: `docker build -f Dockerfile.api -t prism-api .`
+# Requires managed Postgres with pgvector + DATABASE_URL at runtime.
+
+FROM python:3.11-slim-bookworm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY packages/adk_prism /app/packages/adk_prism
+COPY mcp/prism-market-intel /app/mcp/prism-market-intel
+COPY apps/api /app/apps/api
+
+ENV PYTHONPATH=/app/apps/api/src:/app
+ENV PRISM_REPO_ROOT=/app
+
+RUN pip install --no-cache-dir -U pip && \
+    pip install --no-cache-dir -e /app/packages/adk_prism && \
+    pip install --no-cache-dir -e /app/mcp/prism-market-intel && \
+    pip install --no-cache-dir -e /app/apps/api
+
+EXPOSE 8000
+ENV PORT=8000
+
+CMD exec uvicorn prism_api.main:app --host 0.0.0.0 --port "${PORT}"
