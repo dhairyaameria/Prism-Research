@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 /** Upstream Prism API (must stream for SSE; Next `rewrites()` can buffer EventSource). */
 const TARGET = (process.env.API_PROXY_TARGET ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
+export const runtime = "nodejs";
+
+/** Vercel serverless ceiling (Pro+). Hobby has a low cap — for long SSE runs prefer `NEXT_PUBLIC_API_URL` (direct to API). */
+export const maxDuration = 300;
+
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
